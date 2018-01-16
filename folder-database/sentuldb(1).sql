@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 28, 2017 at 06:52 AM
+-- Generation Time: Jan 16, 2018 at 02:15 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 5.6.32
 
@@ -43,7 +43,48 @@ CREATE TABLE `guestbook` (
 --
 
 INSERT INTO `guestbook` (`id`, `name`, `email`, `telp`, `prov`, `kota`, `kecamatan`) VALUES
-(2, 'maulana achmad', 'maulana0593@gmail.com', '+6287776764915', 'jawa barat', 'Bekasi', 'Bekasi Utara');
+(2, 'maulana achmad', 'maulana0593@gmail.com', '+6287776764915', 'jawa barat', 'Bekasi', 'Bekasi Utara'),
+(3, 'calmbe', 'testing@gmail.com', '+6287776764915', 'jawa barat', 'Djakarta', 'Bekasi Utara'),
+(4, 'anonymous', 'anonymous@gmail.com', '+6287776764915', 'jawa barat', 'Djakarta', 'Bekasi Utara'),
+(5, 'hackintosh', 'hackintosh@gmail.com', '+6287776764915', 'jawa barat', 'Djakarta', 'Bekasi Utara');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kecamatan`
+--
+
+CREATE TABLE `kecamatan` (
+  `id` int(12) NOT NULL,
+  `id_kota` int(12) NOT NULL,
+  `name` varchar(125) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kecamatan`
+--
+
+INSERT INTO `kecamatan` (`id`, `id_kota`, `name`) VALUES
+(1, 1, 'Bekasi Utara'),
+(2, 1, 'Bekasi Barat');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kota`
+--
+
+CREATE TABLE `kota` (
+  `id` int(12) NOT NULL,
+  `name` varchar(120) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kota`
+--
+
+INSERT INTO `kota` (`id`, `name`) VALUES
+(1, 'Bekasi');
 
 -- --------------------------------------------------------
 
@@ -65,7 +106,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `name`, `namefile`, `email`) VALUES
-(1, 'invokercarl7', '5f4dcc3b5aa765d61d8327deb882cf99', 'achmad', 'image.png', 'maulana0593@gmail.com');
+(1, 'invokercarl7', '21232f297a57a5a743894a0e4a801fc3', 'achmad', 'image.png', 'maulana0593@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -75,6 +116,18 @@ INSERT INTO `user` (`id`, `username`, `password`, `name`, `namefile`, `email`) V
 -- Indexes for table `guestbook`
 --
 ALTER TABLE `guestbook`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `kecamatan`
+--
+ALTER TABLE `kecamatan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `kota`
+--
+ALTER TABLE `kota`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -91,7 +144,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `guestbook`
 --
 ALTER TABLE `guestbook`
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `kecamatan`
+--
+ALTER TABLE `kecamatan`
   MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `kota`
+--
+ALTER TABLE `kota`
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`
